@@ -1,6 +1,6 @@
 package com.example.store.mapper;
 
-import com.example.store.entity.User;
+import com.example.store.entity.BgUser;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,7 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * @create: 2020/12/6
  **/
 @Mapper
-public interface UserMapper {
+public interface BgUserMapper {
     //根据用户名和密码查询
-    User findUser(User user);
+    BgUser findUser(BgUser bgUser);
+    BgUser selectUserByName(String username);
 }

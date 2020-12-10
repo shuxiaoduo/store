@@ -40,7 +40,10 @@ swagger:
   title: interface-test
   description: api for interface-test
   version: 1.1.0
-  termsOfServiceUrl: https://www.sd365.com
-  apiBasePackage: com.sd365.inter.project.controller
+  termsOfServiceUrl: https://localhost:8082
+  apiBasePackage: com.example.store.controller
 server:
   port: 8082
+
+
+

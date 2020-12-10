@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.store.mapper.BgUserMapper">
+    <select id="findUser" parameterType="BgUser" resultType="BgUser">
+        select userId,userName,password,flag from bguser where userName=#{userName} and password=#{password}
+    </select>
+    <select id="selectUserByName" resultType="BgUser">
+        SELECT username,password,name as role
+        FROM bguser u
+        LEFT JOIN role r
+        ON u.roleId = r.id
+        WHERE username = #{username}
+    </select>
+</mapper>
