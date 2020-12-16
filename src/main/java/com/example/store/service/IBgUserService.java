@@ -1,7 +1,10 @@
 package com.example.store.service;
 
 import com.example.store.entity.BgUser;
+import com.example.store.entity.Resource;
 import org.springframework.security.core.userdetails.UserDetailsService;
+
+import java.util.List;
 
 /**
  * @description: 我是工具类并且我不喜欢被继承 final 保护了我免于继承，private 保护我被创建
@@ -10,4 +13,5 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  **/
 public interface IBgUserService extends UserDetailsService {
     BgUser userLogin(BgUser user);
+    List<Resource> getResourceByRoleId(int id);
 }

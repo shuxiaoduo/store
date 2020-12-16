@@ -11,4 +11,7 @@
         ON u.roleId = r.id
         WHERE username = #{username}
     </select>
+    <select id="selectResourceByRoleId" resultType="Resource">
+        SELECT r.id,r.name,r.pid,r.api from resource r,role_resource rs where r.id=rs.resource_id and role_id=#{id}
+    </select>
 </mapper>

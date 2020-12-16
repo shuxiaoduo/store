@@ -93,7 +93,8 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
      */
     private Authentication getAuthentication(String token) {
         String username = JwtTokenUtils.getUserName(token);
-
+        System.out.println(token+" token");
+        System.out.println(username+" 111");
         //提取角色信息
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 

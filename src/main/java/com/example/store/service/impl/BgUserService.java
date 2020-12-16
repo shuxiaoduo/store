@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @description: 我是工具类并且我不喜欢被继承 final 保护了我免于继承，private 保护我被创建
@@ -24,6 +25,12 @@ public class BgUserService implements IBgUserService {
     @Override
     public BgUser userLogin(BgUser user) {
         return bgUserMapper.findUser(user);
+    }
+
+    @Override
+    public List<com.example.store.entity.Resource> getResourceByRoleId(int id) {
+        List<com.example.store.entity.Resource> list=bgUserMapper.selectResourceByRoleId(id);
+        return list;
     }
 
 
