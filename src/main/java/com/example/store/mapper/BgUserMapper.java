@@ -2,6 +2,8 @@ package com.example.store.mapper;
 
 import com.example.store.entity.BgUser;
 import com.example.store.entity.Resource;
+import com.example.store.entity.Vo.BgUserListVo;
+import com.example.store.entity.Vo.BgUserVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,4 +19,5 @@ public interface BgUserMapper {
     BgUser findUser(BgUser bgUser);
     BgUser selectUserByName(String username);
     List<Resource> selectResourceByRoleId(int id);
+    List<BgUserListVo> getBgUserList(BgUserListVo bgUser);
 }

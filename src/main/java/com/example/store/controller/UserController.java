@@ -1,5 +1,8 @@
 package com.example.store.controller;
 
+import com.example.store.entity.BgUser;
+import com.example.store.entity.Vo.BgUserListVo;
+import com.example.store.entity.Vo.BgUserVo;
 import com.example.store.service.impl.BgUserService;
 import com.example.store.service.impl.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +29,15 @@ public class UserController {
     BgUserService userService;
     @Autowired
     RoleService roleService;
+
     @RequestMapping("/getResource")
-    public List<com.example.store.entity.Resource> getResource(@RequestParam(value = "role_name")String name){
-        int id=roleService.getRoleIdByName(name);
+    public List<com.example.store.entity.Resource> getResource(@RequestParam(value = "role_name") String name) {
+        int id = roleService.getRoleIdByName(name);
         return userService.getResourceByRoleId(id);
-}
+    }
+    @RequestMapping("/getBgUserList")
+    public List<BgUserListVo> getBgUserList(@RequestBody BgUserListVo bgUser){
+        return userService.getBgUserList(bgUser);
+    }
+
 }

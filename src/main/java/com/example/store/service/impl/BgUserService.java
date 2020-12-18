@@ -1,6 +1,8 @@
 package com.example.store.service.impl;
 
 import com.example.store.entity.BgUser;
+import com.example.store.entity.Vo.BgUserListVo;
+import com.example.store.entity.Vo.BgUserVo;
 import com.example.store.mapper.BgUserMapper;
 import com.example.store.service.IBgUserService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,6 +33,11 @@ public class BgUserService implements IBgUserService {
     public List<com.example.store.entity.Resource> getResourceByRoleId(int id) {
         List<com.example.store.entity.Resource> list=bgUserMapper.selectResourceByRoleId(id);
         return list;
+    }
+
+    @Override
+    public List<BgUserListVo> getBgUserList(BgUserListVo bgUser) {
+        return bgUserMapper.getBgUserList(bgUser);
     }
 
 

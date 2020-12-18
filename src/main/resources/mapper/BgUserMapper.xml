@@ -14,4 +14,8 @@
     <select id="selectResourceByRoleId" resultType="Resource">
         SELECT r.id,r.name,r.pid,r.api from resource r,role_resource rs where r.id=rs.resource_id and role_id=#{id}
     </select>
+    <select id="getBgUserList" resultType="BgUserListVo">
+        select username,password,sex,birthday,phone,email,create_time,roleId,flag from bguser
+        <if test="username != null and username != ''">username = #{username}</if>
+    </select>
 </mapper>

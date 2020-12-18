@@ -2,6 +2,7 @@ package com.example.store.service;
 
 import com.example.store.entity.BgUser;
 import com.example.store.entity.Resource;
+import com.example.store.entity.Vo.BgUserListVo;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -14,4 +15,5 @@ import java.util.List;
 public interface IBgUserService extends UserDetailsService {
     BgUser userLogin(BgUser user);
     List<Resource> getResourceByRoleId(int id);
+    List<BgUserListVo> getBgUserList(BgUserListVo bgUser);
 }

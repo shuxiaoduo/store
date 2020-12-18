@@ -1,13 +1,16 @@
 package com.example.store.entity;
 
 import com.example.store.common.Constant;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -27,8 +30,26 @@ public class BgUser implements UserDetails, Serializable {
     private String username;
     //用户密码
     private String password;
+    //性别
+    private String sex;
+    //出生日期
+
+   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+
+    private Date birthday;
+    //电话号码
+    private String phone;
+    //电子邮箱
+    private String email;
+    //创建时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private String create_time;
     //用户角色
     private String role;
+    //用户状态
+    private int flag;
     /**
      * 登录成功时即进入这个方法获取权限
      * @return
@@ -36,11 +57,9 @@ public class BgUser implements UserDetails, Serializable {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-
         if(role.equals("ROLE_admin")) {
             authorities.add(Constant.GLOBAL_ADMIN);
         }
-
         return authorities;
     }
 

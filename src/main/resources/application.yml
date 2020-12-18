@@ -43,7 +43,7 @@ swagger:
   termsOfServiceUrl: https://localhost:8082
   apiBasePackage: com.example.store.controller
 server:
-  port: 8082
+  port: 8083
 
 
 
