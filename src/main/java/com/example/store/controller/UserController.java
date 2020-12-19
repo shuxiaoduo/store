@@ -5,6 +5,7 @@ import com.example.store.entity.Vo.BgUserListVo;
 import com.example.store.entity.Vo.BgUserVo;
 import com.example.store.service.impl.BgUserService;
 import com.example.store.service.impl.RoleService;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,17 @@ public class UserController {
     }
     @RequestMapping("/getBgUserList")
     public List<BgUserListVo> getBgUserList(@RequestBody BgUserListVo bgUser){
+        System.out.println("sss"+bgUser);
         return userService.getBgUserList(bgUser);
+    }
+    @RequestMapping("/deleteBgUserById")
+    public Boolean deleteBgUserById(@RequestParam("userId") int id)
+    {
+        return userService.deleteBgUserById(id);
+    }
+    @RequestMapping("/updateFlag")
+    public Boolean updateFlag(@RequestParam("userId") int id,@RequestParam("flag") int flag){
+        return userService.updateFlag(id,flag);
     }
 
 }

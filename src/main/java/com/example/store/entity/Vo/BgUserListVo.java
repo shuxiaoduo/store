@@ -40,7 +40,7 @@ public class BgUserListVo {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private String create_time;
     //用户角色
-    private int role;
+    private String role;
     //用户状态
     private int flag;
 }

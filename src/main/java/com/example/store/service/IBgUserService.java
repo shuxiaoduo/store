@@ -3,6 +3,7 @@ package com.example.store.service;
 import com.example.store.entity.BgUser;
 import com.example.store.entity.Resource;
 import com.example.store.entity.Vo.BgUserListVo;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -13,7 +14,9 @@ import java.util.List;
  * @create: 2020/12/6
  **/
 public interface IBgUserService extends UserDetailsService {
-    BgUser userLogin(BgUser user);
-    List<Resource> getResourceByRoleId(int id);
-    List<BgUserListVo> getBgUserList(BgUserListVo bgUser);
+    public BgUser userLogin(BgUser user);
+    public List<Resource> getResourceByRoleId(int id);
+    public List<BgUserListVo> getBgUserList(BgUserListVo bgUser);
+    public Boolean deleteBgUserById(int id);
+    public Boolean updateFlag(int id,int flag);
 }

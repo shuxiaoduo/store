@@ -20,4 +20,6 @@ public interface BgUserMapper {
     BgUser selectUserByName(String username);
     List<Resource> selectResourceByRoleId(int id);
     List<BgUserListVo> getBgUserList(BgUserListVo bgUser);
+    Boolean deleteBgUserById(int id);
+    public Boolean updateFlag(int id,int flag);
 }

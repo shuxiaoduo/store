@@ -40,6 +40,16 @@ public class BgUserService implements IBgUserService {
         return bgUserMapper.getBgUserList(bgUser);
     }
 
+    @Override
+    public Boolean deleteBgUserById(int id) {
+        return bgUserMapper.deleteBgUserById(id);
+    }
+
+    @Override
+    public Boolean updateFlag(int id, int flag) {
+        return bgUserMapper.updateFlag(id,flag);
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
