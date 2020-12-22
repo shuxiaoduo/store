@@ -16,5 +16,7 @@ public class Resource {
     private int id;
     private String name;
     private int pid;
-    private String api;
+    private String path;
+    private String component;
+    private String icon;
 }

@@ -19,6 +19,7 @@ public interface IBgUserService extends UserDetailsService {
     public List<Resource> getResourceByRoleId(int id);
     public List<BgUserListVo> getBgUserList(String code,String userName,int ps,int pn);
     public Boolean deleteBgUserById(int id);
+    public Boolean deleteBgUserByIds(Integer []ids);
     public Boolean updateFlag(int id,int flag);
     public Boolean addBgUser(BgUser bgUser);
     public Boolean updateBgUser(BgUser bgUser);

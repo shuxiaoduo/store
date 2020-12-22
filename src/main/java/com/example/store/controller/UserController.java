@@ -7,6 +7,7 @@ import com.example.store.service.impl.BgUserService;
 import com.example.store.service.impl.RoleService;
 import com.github.pagehelper.PageInfo;
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,5 +69,9 @@ public class UserController {
     @RequestMapping("/updateBgUser")
     public Boolean updateBgUser(@RequestBody BgUser bgUser){
         return userService.updateBgUser(bgUser);
+    }
+    @RequestMapping("/deleteBgUserByIds")
+    public Boolean deleteBgUserByIds(@RequestBody Integer []userIds){
+        return userService.deleteBgUserByIds(userIds);
     }
 }

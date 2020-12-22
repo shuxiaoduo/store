@@ -12,7 +12,7 @@
         WHERE code = #{username}
     </select>
     <select id="selectResourceByRoleId" resultType="Resource">
-        SELECT r.id,r.name,r.pid,r.api from resource r,role_resource rs where r.id=rs.resource_id and role_id=#{id}
+        SELECT r.id,r.name,r.pid,r.path, r.component, r.icon from resource r,role_resource rs where r.id=rs.resource_id and role_id=#{id}
     </select>
     <select id="getBgUserList" resultType="BgUserListVo">
         select userId,code, username,password,sex,birthday,phone,email,create_time,r.duty as role,flag from bguser b, role r where b.roleId=r.id

@@ -48,6 +48,16 @@ public class BgUserService implements IBgUserService {
     }
 
     @Override
+    public Boolean deleteBgUserByIds(Integer []ids) {
+        for(int id:ids){
+            if(!bgUserMapper.deleteBgUserById(id)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
     public Boolean updateFlag(int id, int flag) {
         return bgUserMapper.updateFlag(id,flag);
     }
