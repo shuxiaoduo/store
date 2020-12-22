@@ -5,6 +5,7 @@ import com.example.store.entity.Vo.BgUserListVo;
 import com.example.store.entity.Vo.BgUserVo;
 import com.example.store.service.impl.BgUserService;
 import com.example.store.service.impl.RoleService;
+import com.github.pagehelper.PageInfo;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
 
 /**
  * @description: 我是工具类并且我不喜欢被继承 final 保护了我免于继承，private 保护我被创建
@@ -37,9 +43,9 @@ public class UserController {
         return userService.getResourceByRoleId(id);
     }
     @RequestMapping("/getBgUserList")
-    public List<BgUserListVo> getBgUserList(@RequestBody BgUserListVo bgUser){
-        System.out.println("sss"+bgUser);
-        return userService.getBgUserList(bgUser);
+    public Object getBgUserList(@RequestParam(value="code",required = false) String code,@RequestParam(value="userName") String userName,@RequestParam(value = "ps") int ps, @RequestParam(value = "pn") int pn){
+        List<BgUserListVo> list=userService.getBgUserList(code,userName,ps,pn);
+        return new PageInfo<>(list,pn);
     }
     @RequestMapping("/deleteBgUserById")
     public Boolean deleteBgUserById(@RequestParam("userId") int id)
@@ -50,5 +56,17 @@ public class UserController {
     public Boolean updateFlag(@RequestParam("userId") int id,@RequestParam("flag") int flag){
         return userService.updateFlag(id,flag);
     }
-
+    @RequestMapping("/addBgUser")
+    public Boolean addBgUser(@RequestBody BgUser bgUser){
+        DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+        Calendar calendar = Calendar.getInstance();
+        String dateName = df.format(calendar.getTime());
+        bgUser.setCreate_time(dateName);
+        System.out.println(bgUser);
+        return userService.addBgUser(bgUser);
+    }
+    @RequestMapping("/updateBgUser")
+    public Boolean updateBgUser(@RequestBody BgUser bgUser){
+        return userService.updateBgUser(bgUser);
+    }
 }

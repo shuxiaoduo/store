@@ -5,6 +5,7 @@ import com.example.store.entity.Resource;
 import com.example.store.entity.Vo.BgUserListVo;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -16,7 +17,9 @@ import java.util.List;
 public interface IBgUserService extends UserDetailsService {
     public BgUser userLogin(BgUser user);
     public List<Resource> getResourceByRoleId(int id);
-    public List<BgUserListVo> getBgUserList(BgUserListVo bgUser);
+    public List<BgUserListVo> getBgUserList(String code,String userName,int ps,int pn);
     public Boolean deleteBgUserById(int id);
     public Boolean updateFlag(int id,int flag);
+    public Boolean addBgUser(BgUser bgUser);
+    public Boolean updateBgUser(BgUser bgUser);
 }

@@ -19,6 +19,7 @@ import java.util.Date;
 public class BgUserListVo {
     //用户id
     private int userId;
+    private String code;
     //用户名
     private String username;
     //用户密码
@@ -27,8 +28,8 @@ public class BgUserListVo {
     private String sex;
     //出生日期
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
 
     private Date birthday;
     //电话号码

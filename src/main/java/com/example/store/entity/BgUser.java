@@ -26,6 +26,7 @@ import java.util.List;
 public class BgUser implements UserDetails, Serializable {
     //用户id
     private int userId;
+    private String code;
     //用户名
     private String username;
     //用户密码
@@ -34,8 +35,8 @@ public class BgUser implements UserDetails, Serializable {
     private String sex;
     //出生日期
 
-   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+   @DateTimeFormat(pattern = "yyyy-MM-dd")
+   @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
 
     private Date birthday;
     //电话号码
@@ -47,6 +48,7 @@ public class BgUser implements UserDetails, Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private String create_time;
     //用户角色
+    int roleId;
     private String role;
     //用户状态
     private int flag;

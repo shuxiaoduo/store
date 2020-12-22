@@ -134,7 +134,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         //不细分用户名或者密码，提高安全性
         else{
             result = new Result().setStatus(ResultStatus.FORBIDDEN)
-                                .setMessage("用户名或密码错误");
+                                .setMessage("工号或密码错误");
         }
         response.getWriter().write(result.toString());
     }

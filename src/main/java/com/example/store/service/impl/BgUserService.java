@@ -5,6 +5,7 @@ import com.example.store.entity.Vo.BgUserListVo;
 import com.example.store.entity.Vo.BgUserVo;
 import com.example.store.mapper.BgUserMapper;
 import com.example.store.service.IBgUserService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,8 +37,9 @@ public class BgUserService implements IBgUserService {
     }
 
     @Override
-    public List<BgUserListVo> getBgUserList(BgUserListVo bgUser) {
-        return bgUserMapper.getBgUserList(bgUser);
+    public List<BgUserListVo> getBgUserList( String code,String userName,int ps,int pn) {
+        PageHelper.startPage(pn, ps);
+        return bgUserMapper.getBgUserList(code,userName);
     }
 
     @Override
@@ -48,6 +50,21 @@ public class BgUserService implements IBgUserService {
     @Override
     public Boolean updateFlag(int id, int flag) {
         return bgUserMapper.updateFlag(id,flag);
+    }
+
+    @Override
+    public Boolean addBgUser(BgUser bgUser) {
+        List<BgUserListVo> list=bgUserMapper.getBgUserList(bgUser.getCode(),null);
+        if(!list.isEmpty()){
+            return false;
+        }else {
+            return bgUserMapper.addBgUser(bgUser);
+        }
+    }
+
+    @Override
+    public Boolean updateBgUser(BgUser bgUser) {
+        return bgUserMapper.updateBgUser(bgUser);
     }
 
 
