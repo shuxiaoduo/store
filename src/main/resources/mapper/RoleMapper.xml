@@ -4,7 +4,7 @@
     <select id="getRoleIdByName" resultType="int" >
         Select id from role where name = #{name}
     </select>
-    <select id="getRoleList" resultType="Role">
+    <select id="getRoleList" resultType="com.example.store.entity.Role">
         select id,name,duty from role  <if test="duty != null and duty != ''">and duty like concat('%',#{duty},'%')</if>
     </select>
 </mapper>

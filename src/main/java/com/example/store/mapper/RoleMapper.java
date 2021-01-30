@@ -11,7 +11,7 @@ import java.util.List;
  * @create: 2020/12/15
  **/
 @Mapper
-public interface RoleMapper {
+public interface RoleMapper extends CommonMapper<Role>{
     int getRoleIdByName(String name);
     public List<Role> getRoleList(String duty);
 }

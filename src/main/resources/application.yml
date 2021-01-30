@@ -43,7 +43,9 @@ swagger:
   termsOfServiceUrl: https://localhost:8082
   apiBasePackage: com.example.store.controller
 server:
-  port: 8083
+  port: 8183
 
 
-
+mapper:
+  mappers: com.example.store.mapper.CommonMapper
+  identity: MYSQL

@@ -14,7 +14,7 @@ import java.util.List;
  * @create: 2020/12/6
  **/
 @Mapper
-public interface BgUserMapper {
+public interface BgUserMapper extends CommonMapper<BgUser>{
     //根据用户名和密码查询
     BgUser findUser(BgUser bgUser);
     BgUser selectUserByName(String username);

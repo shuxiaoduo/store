@@ -19,7 +19,7 @@ class CORSConf {
                 registry.addMapping("/**")
                         .allowedHeaders("*")
                         .allowedMethods("*")
-                        .allowedOrigins("http://localhost:8085")
+                        .allowedOrigins("http://localhost:8086")
                         .allowCredentials(true);
             }
         };
