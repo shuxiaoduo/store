@@ -2,9 +2,9 @@ package com.example.store.service.impl;
 
 import com.example.store.entity.BgUser;
 import com.example.store.entity.Vo.BgUserListVo;
-import com.example.store.entity.Vo.BgUserVo;
 import com.example.store.mapper.BgUserMapper;
 import com.example.store.service.IBgUserService;
+import com.example.store.util.Assert;
 import com.github.pagehelper.PageHelper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -37,9 +37,9 @@ public class BgUserService implements IBgUserService {
     }
 
     @Override
-    public List<BgUserListVo> getBgUserList( String code,String userName,int ps,int pn) {
+    public List<BgUserListVo> getBgUserList(String code, String userName, int ps, int pn, int roleId) {
         PageHelper.startPage(pn, ps);
-        return bgUserMapper.getBgUserList(code,userName);
+        return bgUserMapper.getBgUserList(code,userName,roleId);
     }
 
     @Override
@@ -64,12 +64,8 @@ public class BgUserService implements IBgUserService {
 
     @Override
     public Boolean addBgUser(BgUser bgUser) {
-        List<BgUserListVo> list=bgUserMapper.getBgUserList(bgUser.getCode(),null);
-        if(!list.isEmpty()){
-            return false;
-        }else {
-            return bgUserMapper.addBgUser(bgUser);
-        }
+        Assert.isTrue(bgUserMapper.selectByPrimaryKey(bgUser.getUserId()) != null, "工号重复");
+        return true;
     }
 
     @Override

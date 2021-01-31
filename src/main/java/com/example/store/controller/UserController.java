@@ -2,12 +2,9 @@ package com.example.store.controller;
 
 import com.example.store.entity.BgUser;
 import com.example.store.entity.Vo.BgUserListVo;
-import com.example.store.entity.Vo.BgUserVo;
 import com.example.store.service.impl.BgUserService;
 import com.example.store.service.impl.RoleService;
 import com.github.pagehelper.PageInfo;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +15,6 @@ import javax.annotation.Resource;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 
@@ -44,8 +40,8 @@ public class UserController {
         return userService.getResourceByRoleId(id);
     }
     @RequestMapping("/getBgUserList")
-    public Object getBgUserList(@RequestParam(value="code",required = false) String code,@RequestParam(value="userName") String userName,@RequestParam(value = "ps") int ps, @RequestParam(value = "pn") int pn){
-        List<BgUserListVo> list=userService.getBgUserList(code,userName,ps,pn);
+    public Object getBgUserList(@RequestParam(value="code",required = false) String code, @RequestParam(value="userName") String userName, @RequestParam(value = "ps") int ps, @RequestParam(value = "pn") int pn, @RequestParam(required = false) int roleId){
+        List<BgUserListVo> list=userService.getBgUserList(code,userName,ps,pn,roleId);
         return new PageInfo<>(list,pn);
     }
     @RequestMapping("/deleteBgUserById")
@@ -54,7 +50,7 @@ public class UserController {
         return userService.deleteBgUserById(id);
     }
     @RequestMapping("/updateFlag")
-    public Boolean updateFlag(@RequestParam("userId") int id,@RequestParam("flag") int flag){
+    public Boolean updateFlag(@RequestParam("userId") int id, @RequestParam("flag") int flag){
         return userService.updateFlag(id,flag);
     }
     @RequestMapping("/addBgUser")

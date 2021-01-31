@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.store.mapper.BgUserMapper">
-    <select id="findUser" parameterType="com.example.store.entity.BgUser" resultType="com.example.store.entity.BgUser">
+    <select id="findUser" parameterType="BgUser" resultType="BgUser">
         select userId,userName,password,flag from bguser where userName=#{userName} and password=#{password}
     </select>
-    <select id="selectUserByName" resultType="com.example.store.entity.BgUser">
+    <select id="selectUserByName" resultType="BgUser">
         SELECT username,password,name as role
         FROM bguser u
         LEFT JOIN role r
         ON u.roleId = r.id
         WHERE code = #{username}
     </select>
-    <select id="selectResourceByRoleId" resultType="com.example.store.entity.Resource">
+    <select id="selectResourceByRoleId" resultType="Resource">
         SELECT r.id,r.name,r.pid,r.path, r.component, r.icon from resource r,role_resource rs where r.id=rs.resource_id and role_id=#{id}
     </select>
-    <select id="getBgUserList" resultType="com.example.store.entity.Vo.BgUserListVo">
-        select userId,code, username,password,sex,birthday,phone,email,b.create_time,r.duty as role,flag from bguser b, role r where b.roleId=r.id
+    <select id="getBgUserList" resultType="BgUserListVo">
+        select userId,code,roleId username,password,sex,birthday,phone,email,create_time,r.duty as role,flag from bguser b, role r where b.roleId=r.id
         <if test="code != null and code != ''">and code like concat('%',#{code},'%')</if>
         <if test="userName != null and userName != ''">and username like concat('%',#{userName},'%')</if>
+        <if test="roleId != null and roleId != ''">and roleId = #{roleId}</if>
     </select>
     <delete id="deleteBgUserById">
         delete from bgUser where userId = #{id}

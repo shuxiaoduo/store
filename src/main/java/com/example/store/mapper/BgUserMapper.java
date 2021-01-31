@@ -3,7 +3,6 @@ package com.example.store.mapper;
 import com.example.store.entity.BgUser;
 import com.example.store.entity.Resource;
 import com.example.store.entity.Vo.BgUserListVo;
-import com.example.store.entity.Vo.BgUserVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,14 +13,14 @@ import java.util.List;
  * @create: 2020/12/6
  **/
 @Mapper
-public interface BgUserMapper extends CommonMapper<BgUser>{
+public interface BgUserMapper extends CommonMapper<BgUser> {
     //根据用户名和密码查询
     BgUser findUser(BgUser bgUser);
     BgUser selectUserByName(String username);
     List<Resource> selectResourceByRoleId(int id);
-    List<BgUserListVo> getBgUserList(String code,String userName);
+    List<BgUserListVo> getBgUserList(String code, String userName, int roleId);
     Boolean deleteBgUserById(int id);
-    public Boolean updateFlag(int id,int flag);
+    public Boolean updateFlag(int id, int flag);
     public Boolean addBgUser(BgUser bgUser);
     public Boolean updateBgUser(BgUser bgUser);
 }
